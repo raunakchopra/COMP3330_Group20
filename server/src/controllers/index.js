@@ -1,5 +1,6 @@
 const UserController = require('./user_controller');
 const AccessController = require('./access_contoller');
+const HikeController = require('./hike_controller');
 
 class Controllers {
     constructor(services) {
@@ -10,6 +11,9 @@ class Controllers {
             user: services.userService,
             access: services.sccessService,
         });
+        this.hikeController = new HikeController({
+            hike: services.hikeService,
+        })
     }
 }
 

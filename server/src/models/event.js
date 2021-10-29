@@ -11,7 +11,7 @@ class Event {
             attendees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }]
         }, { timestamps: true });
 
-        this.model = mongoose.model('Hike', HikeSchema);
+        this.model = mongoose.model('Event', EventSchema);
     }
 
     getModel() {
@@ -19,4 +19,4 @@ class Event {
     }
 }
 
-module.exports = Hike;
+module.exports = Event;
