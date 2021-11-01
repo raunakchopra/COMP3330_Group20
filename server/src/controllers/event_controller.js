@@ -1,17 +1,15 @@
-const { validationResult } = require('express-validator');
-
-class HikeController {
-    constructor({ hike }) {
-        this.hikeService = hike
+class EventController {
+    constructor({ event }) {
+        this.eventService = event
     }
 
     async findOne(req, res, next){
         const { id } = req.params
 
-        let hike;
+        let event;
 
         try{
-            hike = await this.hikeService.findOne({
+            event = await this.eventService.findOne({
                 query: {
                     _id: id
                 }
@@ -22,32 +20,32 @@ class HikeController {
         }
 
         return res.json({
-            hike
+            event
         })
     }
 
     async findAll(req, res, next){
         
-        let hikes
+        let events
         
         try{
-            hikes = await this.hikeService.findMany({})
+            events = await this.eventService.findMany({})
         }
         catch(e){
             return next(e)
         }
 
         return res.json({
-            hikes
+            events
         })
     }
 
     async createOne(req, res, next){
         
-        let hike
+        let event
 
         try{
-            hike = await this.hikeService.createOne({
+            event = await this.eventService.createOne({
                 query: {
                     ...req.body
                 }
@@ -58,7 +56,7 @@ class HikeController {
         }
 
         return res.json({
-            hike
+            event
         })
     }
 
@@ -71,4 +69,4 @@ class HikeController {
     }
 }
 
-module.exports = HikeController;
+module.exports = EventController;
