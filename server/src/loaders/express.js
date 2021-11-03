@@ -3,7 +3,6 @@ const cors = require('cors');
 const responseTime = require('response-time');
 const errorHandler = require('../middleware/error_handler');
 const logger = require('../middleware/logger');
-const redis = require('../middleware/redis');
 const health = require('../middleware/health');
 
 const pre = ({ app }) => {
@@ -11,7 +10,6 @@ const pre = ({ app }) => {
     app.use(cors());
     app.use(responseTime());
     app.use(express.json());
-    app.use(redis);
     app.use(health);
 };
 

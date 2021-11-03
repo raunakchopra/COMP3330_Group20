@@ -16,4 +16,4 @@ const publicKey = '-----BEGIN PUBLIC KEY-----\n' +
 module.exports = {
     privateKey,
     publicKey,
-};
+}
