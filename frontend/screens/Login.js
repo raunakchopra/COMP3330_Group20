@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 
-export default function App() {
+export default function Login() {
   return (
     <View style={styles.container}>
       <Image 

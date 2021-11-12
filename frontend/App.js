@@ -3,10 +3,11 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Login from './screens/Login'
+import Newsfeed from './screens/Newsfeed'
 
 export default function App() {
   return (
-    <Login />
+    <Newsfeed />
   );
 }
 
