@@ -2,26 +2,30 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, ScrollView } from 'react-native';
 
+import HikeCard from '../components/hikeCard';
+
 export default function Newsfeed() {
   return (
     <View style={styles.container}>
-      <View>
-        <Text> Hikes </Text>
+        <Text style={styles.hikeHeading}> HIKES </Text>
         <ScrollView 
             horizontal={true}
             style={styles.scrollView}
         >
-            <View style={styles.hikeText}></View>
-            <View style={styles.hikeText}></View>
-            <View style={styles.hikeText}></View>
-            <View style={styles.hikeText}></View>
+            <HikeCard />
+            <HikeCard />
+            <HikeCard />
+        </ScrollView>
+        <Text style={styles.hikeHeading}> EVENTS </Text>
+        <ScrollView 
+            horizontal={true}
+            style={styles.scrollView}
+        >
+            <HikeCard />
+            <HikeCard />
+            <HikeCard />
         </ScrollView>
       </View>
-      <View>
-          <Text> Events </Text>
-      </View>
-
-    </View>
   );
 }
 
@@ -32,13 +36,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop:100,
+    paddingRight: 15,
+    paddingLeft: 15,
   },
   scrollView:{
-    paddingLeft: 20,
-    paddingRight: 20,
-  },    
+  },
+  hikeHeading: {
+      fontFamily: 'sans-serif-medium',
+      fontSize: 26,
+      textAlign: 'center',
+      fontWeight: 'bold',
+      marginLeft: -7,
+      marginBottom: 15
+  },
   hikeText: {
-      width:350,
+      width:400,
       marginRight: 10,
       height:200,
       backgroundColor: 'red'
