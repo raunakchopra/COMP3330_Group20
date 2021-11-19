@@ -5,10 +5,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import Login from './screens/Login'
 import Newsfeed from './screens/Newsfeed'
 import Hike from './screens/Hike'
+import Event from './screens/Event'
 
 export default function App() {
   return (
-    <Hike />
+    <Event />
   );
 }
 
