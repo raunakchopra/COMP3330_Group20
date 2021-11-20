@@ -52,8 +52,6 @@ export default function Hike() {
                 Lion Rock – Hong Kong’s iconic peak is not only known for breathtaking views of the city but also its peculiar shape that can be identified from miles. For those living in Hong Kong, it is a symbol of grit and determination. And for many miles. For those living in Hong Kong, it is a symbol of grit and determination.
               </Text>
             </View>
-
-
             <View>
               <Text style={styles.sectionTitle}> Details </Text>
               <View style={styles.detailsSection}>
@@ -77,7 +75,6 @@ export default function Hike() {
                 <Text style={styles.labelData}> Yada-Yada</Text>
               </View>
             </View>
-
             <View>
               <Text style={styles.sectionTitle}> Pictures </Text>
               <ScrollView
@@ -88,7 +85,12 @@ export default function Hike() {
                 <HikeCard />
               </ScrollView>
             </View>
-            
+            <View>
+              <View style={styles.reviewsHeader}>
+                <Text style={styles.reviewsTitle}>Reviews:</Text>
+                <Text style={styles.reviewsTitle}>AV</Text>
+              </View>
+            </View>
           </ScrollView>
     </View>
   );
@@ -103,6 +105,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   }, 
+  reviewsHeader: {
+    flex: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#D7D7D7',
+    paddingHorizontal: 30,
+    paddingVertical: 10
+  },
+  reviewsTitle: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    fontFamily: 'sans-serif-medium',
+  },
   labelDetail: {
     fontSize: 17,
     fontFamily: 'sans-serif-medium',
