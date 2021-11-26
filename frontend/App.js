@@ -9,7 +9,7 @@ import Event from './screens/Event'
 
 export default function App() {
   return (
-    <Hike />
+    <Newsfeed />
   );
 }
 
