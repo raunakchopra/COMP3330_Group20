@@ -6,6 +6,8 @@ import Login from './screens/Login'
 import Newsfeed from './screens/Newsfeed'
 import Hike from './screens/Hike'
 import Event from './screens/Event'
+import Events from './screens/Events'
+import Hikes from './screens/Hikes'
 
 export default function App() {
   return (
