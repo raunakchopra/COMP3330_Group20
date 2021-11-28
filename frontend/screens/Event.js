@@ -3,7 +3,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
 import HikeCard from '../components/hikeCard';
 
-export default function Event() {
+export default function Event({route}) {
+  const { event } = route.params
   return (
     <View style={styles.container}>
           <ImageBackground 
@@ -83,9 +84,6 @@ export default function Event() {
               <ScrollView
                 horizontal={true}
               >
-                <HikeCard />
-                <HikeCard />
-                <HikeCard />
               </ScrollView>
             </View>
 

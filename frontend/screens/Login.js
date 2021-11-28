@@ -1,10 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
 
 
-// Archit verma was here
-export default function Login() {
+export default function Login({ navigation  }) {
+  const [username, setUserName] = useState("")
+  const [password, setPassword] = useState("")
+  const [user, setUser] = useState()
+
   return (
     <View style={styles.container}>
       <Image 
@@ -13,12 +16,23 @@ export default function Login() {
       />
       <TextInput 
         style={styles.input}
+        onChangeText={(val) => setUserName(val)}
         placeholder = "Username"
       />
       <TextInput 
         style={styles.input}
+        onChangeText={(val) => setPassword(val)}
         placeholder = "Password"
       />
+      <TouchableOpacity 
+        style={styles.enterButton}
+        onPress={() => {
+          setUser({username, password})
+          navigation.navigate('NewsFeed', { name: 'Raunak' })
+        }}  
+      >
+        <Text style={styles.enterText}>Enter</Text>
+      </TouchableOpacity>
       <Text style={styles.footer}>
           Hike Hong Kong - 2021
       </Text>
@@ -34,6 +48,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  enterButton: {
+    marginTop: 20,
+    backgroundColor: '#35BDD0',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5
+  },
+  enterText: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#CAD5E2'
+  },  
   input: {
     height: 40,
     width: 200,

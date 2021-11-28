@@ -2,10 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, ScrollView, Keyboard, Button } from 'react-native';
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/native';
 
 import HikeCard from '../components/hikeCard';
 
 export default function Headerbar() {
+  const navigation = useNavigation();
     return (
         <View style={styles.header}>
             <View>
@@ -13,14 +15,13 @@ export default function Headerbar() {
                     name="search1"
                     size={20}
                     color="black"
-                    style={{ margin: 5 }}
+                    onPress={() => navigation.navigate('Search', { })}
                 />
             </View>
             <View>
                 <TextInput
-
                     placeholder="Search"
-                    style={{ width: 200, borderWidth: 1, borderRadius: 5, alignItems: 'center', alignContent: 'center', padding: 5 }}
+                    style={{ width: 250, borderWidth: 1, borderRadius: 5, alignItems: 'center', alignContent: 'center', padding: 5 }}
                 />
             </View>
             <View>
@@ -44,40 +45,8 @@ export default function Headerbar() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: 10,
-        paddingRight: 15,
-        paddingLeft: 15,
-    },
-    scrollView: {
-        marginTop: 5,
-    },
-    divider: {
-        height: 30,
-        width: 1000,
-        backgroundColor: '#404040',
-
-    },
-    hikeHeading: {
-        fontFamily: 'sans-serif-medium',
-        fontSize: 26,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        marginLeft: -7,
-        marginBottom: 15
-    },
-    hikeText: {
-        width: 400,
-        marginRight: 10,
-        height: 200,
-        backgroundColor: 'red'
-    },
     header: {
-        width: '90%',
+        width: '100%',
         height: 50,
         alignSelf: 'center',
         backgroundColor: '#fff',
@@ -85,11 +54,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        marginTop: 50,
         paddingRight: 5,
         paddingLeft: 5,
-        borderColor: 'black',
-        borderWidth: 1,
         shadowColor: '#000000',
         shadowOffset: {
             width: 0,
@@ -99,5 +65,4 @@ const styles = StyleSheet.create({
         shadowOpacity: 1.0
 
     }
-
 });

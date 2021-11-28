@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View,ImageBackground, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function hikeCard(props) {
+export default function eventCard(props) {
   const navigation = useNavigation();
   return (
         <TouchableOpacity 
           style={styles.container}
           onPress={() => {
-            navigation.navigate('Hike', { hike: props.data })
+            navigation.navigate('Event', { event: props.data })
           }}
         >
             <ImageBackground 
@@ -17,13 +17,13 @@ export default function hikeCard(props) {
                 style={styles.image}
             >
                 <View style={styles.textContainer}>
-                    <Text style={styles.hikeName}>{props.data.route}</Text>
+                    <Text style={styles.hikeName}>{props.data.name}</Text>
                     {/* <Text style={styles.hikeLocation}>Hong Kong Island</Text> */}
                 </View>
             </ImageBackground>
             <View>
-                <Text style={styles.hikeInfo}><Text style={styles.hikeInfoLabel}>Duration: </Text>{props.data.duration} </Text>
-                <Text style={styles.hikeInfo}><Text style={styles.hikeInfoLabel}>Length:</Text> {props.data.length}</Text>
+                <Text style={styles.hikeInfo}><Text style={styles.hikeInfoLabel}>Organizer: </Text>{props.data.organizer} </Text>
+                <Text style={styles.hikeInfo}><Text style={styles.hikeInfoLabel}>Date:</Text> {props.data.date}</Text>
             </View>
         </TouchableOpacity>
   );
@@ -70,3 +70,11 @@ const styles = StyleSheet.create({
       fontSize: 15
   }
 });
+
+const data ={
+    "name": "Hike to Peak",
+    "hike": "Victoria Peak",
+    "information": "Start at Mount Butler Road, walk along Sir Cecils Ride and proceed to Tai Tam Reservoir Road, Jardines Lookout and Siu Ma Shan. Continue along Quarry Bay Tree Walk to Greig Road, Quarry Bay. This route largely follows Section 2 of the Wilson Trail. The middle part is rather rugged with uphill and downhill sections.",
+    "organizer": "Victoria Peak Hiking Group",
+    "date": "Thursday, December 1st"
+}

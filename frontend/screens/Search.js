@@ -1,67 +1,167 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, ScrollView, Keyboard, Button } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native';
 
 import HikeCard from '../components/hikeCard';
-import Headerbar from '../components/headerbar';
+import EventCard from '../components/eventCard';
 
-export default function Hikes() {
-    return (
-        <>
-            <Headerbar />
 
-            <View style={styles.container}>
-                <Text style={styles.hikeHeading}> HIKES </Text>
-                {/* <View style={styles.divider}></View> */}
-                <ScrollView
-                    vertical={true}
-                    style={styles.scrollView}
-                >
-                    {
-                        HikeData.map((hike) => <HikeCard data={hike}/>)
-                    }
-                </ScrollView>
+export default function Search({ navigation }) {
+    let seacrhQuery = "Ma On Shan"
+    const [relevantHikes, setRelevantHikes] = useState([])
+    const [relevantEvents, setRelevantEvents] = useState([])
 
-            </View>
-        </>
-    );
+    useEffect(()=>{
+        let tempHikes = [], tempEvents = []
+        HikeData.map((hike) => {
+            if(hike.route.includes(seacrhQuery) || hike.brief.includes(seacrhQuery)){
+                tempHikes.push(hike)
+            }
+        })
+        setRelevantHikes(tempHikes)
+
+        EventsData.map((event) => {
+            if(event.name.includes(seacrhQuery) || event.hike.includes(seacrhQuery) || event.information.includes(seacrhQuery)){
+                tempEvents.push(event)
+            }
+        })
+
+        setRelevantEvents(tempEvents)
+    }, [])
+
+
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.container}>
+        <TouchableOpacity>
+          <Text style={styles.hikeHeading}> HIKES </Text>
+        </TouchableOpacity>
+        <ScrollView
+          horizontal={true}
+          style={styles.scrollView}
+        >
+          {
+            relevantHikes.map((hike) => <HikeCard data={hike} />)
+          }
+        </ScrollView>
+        <TouchableOpacity onPress={() => navigation.navigate('EventPage', { name: 'Jane' })}>
+          <Text style={styles.hikeHeading}> EVENTS </Text>
+        </TouchableOpacity>
+        <ScrollView
+          horizontal={true}
+          style={styles.scrollView}
+        >
+          {
+            relevantEvents.map((event) => <EventCard data={event} />)
+          }
+        </ScrollView>
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: 10,
-        paddingRight: 15,
-        paddingLeft: 15,
-    },
-    scrollView: {
-        marginTop: 5,
-    },
-    divider: {
-        height: 30,
-        width: 1000,
-        backgroundColor: '#404040',
-
-    },
-    hikeHeading: {
-        fontFamily: 'sans-serif-medium',
-        fontSize: 26,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        marginLeft: -7,
-        marginBottom: 15
-    },
-    hikeText: {
-        width: 400,
-        marginRight: 10,
-        height: 200,
-        backgroundColor: 'red'
-    },
-
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  addEventContainer:{
+    flex: 1,
+    paddingVertical: 40
+  },
+  addEventText:{
+    fontSize: 20
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 10,
+    paddingRight: 15,
+    paddingLeft: 15,
+  },
+  scrollView: {
+  },
+  hikeHeading: {
+    fontFamily: 'sans-serif-medium',
+    fontSize: 26,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    marginLeft: -7,
+    marginBottom: 15
+  },
+  hikeText: {
+    width: 400,
+    marginRight: 10,
+    height: 200,
+    backgroundColor: 'red'
+  },
+  enterButton: {
+    marginTop: 20,
+    backgroundColor: '#35BDD0',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5
+  },
+  enterText: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#CAD5E2'
+  },  
+  input: {
+    height: 40,
+    width: 200,
+    margin: 12,
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: -3,
+  },
+  logo: {
+      height: 150,
+      width: 150,
+      transform: [{ rotate: '270deg' }],
+      marginBottom: 20,
+  },
+  footer:{
+      top: 250
+  }
 });
+
+const EventsData = [
+    {
+    "name": "Hike to Ma On Shan",
+    "hike": "Victoria Peak",
+    "information": "Start at Mount Butler Road, walk along Sir Cecils Ride and proceed to Tai Tam Reservoir Road, Jardines Lookout and Siu Ma Shan. Continue along Quarry Bay Tree Walk to Greig Road, Quarry Bay. This route largely follows Section 2 of the Wilson Trail. The middle part is rather rugged with uphill and downhill sections.",
+    "organizer": "Victoria Peak Hiking Group",
+    "date": "Thursday, December 1st"
+},
+{
+    "name": "Hike to Peak",
+    "hike": "Ma On Shan",
+    "information": "Start at Mount Butler Road, walk along Sir Cecils Ride and proceed to Tai Tam Reservoir Road, Jardines Lookout and Siu Ma Shan. Continue along Quarry Bay Tree Walk to Greig Road, Quarry Bay. This route largely follows Section 2 of the Wilson Trail. The middle part is rather rugged with uphill and downhill sections.",
+    "organizer": "Victoria Peak Hiking Group",
+    "date": "Thursday, December 1st"
+},
+{
+    "name": "Hike to Peak",
+    "hike": "Victoria Peak",
+    "information": "Start at Mount Butler Road, walk along Sir Cecils Ride and proceed to Tai Tam Reservoir Road, Jardines Lookout and Siu Ma Shan. Continue along Quarry Bay Tree Walk to Greig Road, Quarry Bay. This route largely follows Section 2 of the Wilson Trail. The middle part is rather rugged with uphill and downhill sections.",
+    "organizer": "Victoria Peak Hiking Group",
+    "date": "Thursday, December 1st"
+},
+{
+    "name": "Hike to Peak",
+    "hike": "Victoria Peak",
+    "information": "Start at Mount Butler Road, walk along Sir Cecils Ride and proceed to Tai Tam Reservoir Road, Jardines Lookout and Siu Ma Shan. Continue along Quarry Bay Tree Walk to Greig Road, Quarry Bay. This route largely follows Section 2 of the Wilson Trail. The middle part is rather rugged with uphill and downhill sections.",
+    "organizer": "Victoria Peak Hiking Group",
+    "date": "Thursday, December 1st"
+}
+]
 
 const HikeData = [
     {
