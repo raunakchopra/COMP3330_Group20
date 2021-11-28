@@ -1,10 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, ImageBackground, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import HikeCard from '../components/hikeCard';
 
 export default function Event({route}) {
   const { event } = route.params
+
+  const createEventAttendAlert = () =>
+    Alert.alert(
+      "Hike Hong Kong",
+      `Your Attendance has been noted. Thank You`,
+      [
+        {
+          text: "Proceed!",
+        }
+      ]
+    );
+  
   return (
     <View style={styles.container}>
           <ImageBackground 
@@ -88,7 +100,7 @@ export default function Event({route}) {
             </View>
 
             <View style={styles.attendButtonContainer}>
-                <TouchableOpacity style={styles.attendButton}>
+                <TouchableOpacity style={styles.attendButton} onPress={() => createEventAttendAlert()}>
                     <Text style={styles.attendButtonText}>ATTEND EVENT</Text>
                 </TouchableOpacity>
             </View>

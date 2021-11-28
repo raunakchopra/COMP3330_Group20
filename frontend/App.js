@@ -13,6 +13,7 @@ import Event from './screens/Event'
 import Events from './screens/Events'
 import Hikes from './screens/Hikes'
 import Search from './screens/Search';
+import AddEvent from './screens/AddEvent';
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <Stack.Screen name = "HikePage" component={Hikes} />
         <Stack.Screen name = "EventPage" component={Events} />
         <Stack.Screen name = "Event" component={Event} />
+        <Stack.Screen name="AddEvent" component={AddEvent} />
       </Stack.Navigator>
     </NavigationContainer>
   );

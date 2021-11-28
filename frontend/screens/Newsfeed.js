@@ -8,7 +8,7 @@ import Headerbar from '../components/headerbar';
 
 export default function Newsfeed({navigation, route}) {
   const {name} = route.params; 
-  const createThreeButtonAlert = () =>
+  const createAlert = () =>
     Alert.alert(
       "Hike Hong Kong",
       `Welcome to Hike Hong Kong, ${name}. `,
@@ -18,7 +18,7 @@ export default function Newsfeed({navigation, route}) {
         }
       ]
     );
-    createThreeButtonAlert()
+    createAlert()
   return (
     <ScrollView>
       <Headerbar />
@@ -47,7 +47,10 @@ export default function Newsfeed({navigation, route}) {
             EventData.map((event) => <EventCard data={event} />)
           }
         </ScrollView>
-        <TouchableOpacity style={styles.addEventContainer}>
+        <TouchableOpacity 
+          style={styles.addEventContainer}
+          onPress={() => navigation.navigate('AddEvent', {})}
+        >
           <Text style={styles.addEventText}>Add Event</Text>
         </TouchableOpacity>
       </View>
