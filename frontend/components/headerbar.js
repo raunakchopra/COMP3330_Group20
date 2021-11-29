@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, ScrollView, Keyboard, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Keyboard, Button } from 'react-native';
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from '@react-navigation/native';
 
@@ -13,7 +13,8 @@ export default function Headerbar() {
             <View>
                 <AntDesign
                     name="search1"
-                    size={20}
+                    size={25}
+                    style={{marginLeft: 15}}
                     color="black"
                     onPress={() => navigation.navigate('Search', { })}
                 />
@@ -21,23 +22,28 @@ export default function Headerbar() {
             <View>
                 <TextInput
                     placeholder="Search"
-                    style={{ width: 250, borderWidth: 1, borderRadius: 5, alignItems: 'center', alignContent: 'center', padding: 5 }}
+                    style={{ width: 260, height: 35, borderWidth: 1, marginLeft: 10, borderRadius: 5, alignItems: 'center', alignContent: 'center', padding: 5 }}
                 />
             </View>
             <View>
+            <TouchableOpacity 
+                style={styles.addEventContainer}
+                onPress={() => navigation.navigate('AddEvent', {})}
+            >
                 <AntDesign
-                    name="heart"
-                    size={20}
-                    color="#d90058"
-                    style={{ margin: 5, }}
+                    name="plus"
+                    size={25}
+                    color="black"
+                    style={{ borderWidth: 1, borderRadius: 15, alignItems: 'center', alignContent: 'center', marginLeft: 3, marginRight: 11 }}
                 />
+            </TouchableOpacity>
             </View>
             <View>
                 <AntDesign
                     name="user"
-                    size={20}
+                    size={25}
                     color="black"
-                    style={{ borderWidth: 1, borderRadius: 10, alignItems: 'center', alignContent: 'center', margin: 5 }}
+                    style={{ borderWidth: 1, borderRadius: 15, alignItems: 'center', alignContent: 'center', marginRight: 25 }}
                 />
             </View>
         </View>
@@ -45,9 +51,17 @@ export default function Headerbar() {
 }
 
 const styles = StyleSheet.create({
+    addEventContainer:{
+        flex: 0,
+        marginLeft: 10,
+    },
+    addEventText:{
+        fontSize: 15
+    },
     header: {
         width: '100%',
         height: 50,
+        // margin
         alignSelf: 'center',
         backgroundColor: '#fff',
         display: 'flex',
@@ -57,12 +71,7 @@ const styles = StyleSheet.create({
         paddingRight: 5,
         paddingLeft: 5,
         shadowColor: '#000000',
-        shadowOffset: {
-            width: 0,
-            height: 3
-        },
-        shadowRadius: 5,
-        shadowOpacity: 1.0
-
+        borderBottomWidth: 2,
+        borderBottomColor: '#f2f2f2',
     }
 });

@@ -14,16 +14,22 @@ export default function eventCard(props) {
             <ImageBackground 
                 source={image} 
                 resizeMode="cover"
+                imageStyle={{borderRadius: 12}}
                 style={styles.image}
             >
                 <View style={styles.textContainer}>
                     <Text style={styles.hikeName}>{props.data.name}</Text>
-                    {/* <Text style={styles.hikeLocation}>Hong Kong Island</Text> */}
                 </View>
             </ImageBackground>
-            <View>
-                <Text style={styles.hikeInfo}><Text style={styles.hikeInfoLabel}>Organizer: </Text>{props.data.organizer} </Text>
-                <Text style={styles.hikeInfo}><Text style={styles.hikeInfoLabel}>Date:</Text> {props.data.date}</Text>
+            <View style={{marginLeft: 10}}>
+                <Text style={styles.hikeInfo}>
+                  <Text style={styles.hikeInfoLabel}>Organizer: </Text>
+                  <Text style={{fontStyle: 'italic'}}>{props.data.organizer}</Text>
+                </Text>
+                <Text style={styles.hikeInfo}>
+                  <Text style={styles.hikeInfoLabel}>Date:</Text> 
+                  <Text style={{fontStyle: 'italic'}}>{props.data.date}</Text>
+                </Text>
             </View>
         </TouchableOpacity>
   );
@@ -46,8 +52,6 @@ const styles = StyleSheet.create({
   },
   textContainer: {
       backgroundColor: '#BA2487',
-      width: 150,
-      marginTop: 133,
   },
   hikeName: {
     color: 'white',

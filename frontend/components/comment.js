@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },  
   container:{
       paddingVertical: 5,
-      paddingHorizontal: 20
+      paddingHorizontal: 10
   },
   username:{
       fontSize: 18,
