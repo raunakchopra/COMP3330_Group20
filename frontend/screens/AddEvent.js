@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   attendButton: {
-    backgroundColor: '#C4C4C4',
+    backgroundColor: '#BA2487',
     width: 230,
     flex: 0,
     marginTop: 50,
@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
   attendButtonText: {
       fontFamily: 'sans-serif-medium',
       fontSize: 18,
+      color: 'white',
       fontWeight: 'bold'
   },
   container: {

@@ -5,6 +5,7 @@ import { StyleSheet, Text, View, TextInput, Image, ScrollView, Keyboard, Button 
 import HikeCard from '../components/hikeCard';
 import Headerbar from '../components/headerbar';
 import EventCard from '../components/eventCard';
+import Footer from '../components/footer';
 
 export default function Events() {
     return (
@@ -12,17 +13,18 @@ export default function Events() {
             <Headerbar />
 
             <View style={styles.container}>
-                <Text style={styles.hikeHeading}> Events </Text>
                 <ScrollView
                     vertical={true}
                     style={styles.scrollView}
                 >
+
+                    <Text style={styles.hikeHeading}> EVENTS </Text>
                     {
-                        EventsData.map((event) => <EventCard data={event} />)
+                        EventsData.map((event) => <View style={{marginBottom: 40}}><EventCard data={event} /></View>)
                     }
                 </ScrollView>
-
             </View>
+            <Footer />
         </>
     );
 }
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
     },
     hikeHeading: {
         fontFamily: 'sans-serif-medium',
-        fontSize: 26,
+        fontSize: 20,
         textAlign: 'center',
         fontWeight: 'bold',
         marginLeft: -7,

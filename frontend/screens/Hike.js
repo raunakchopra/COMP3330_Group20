@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Image, ImageBackground, ScrollView, TouchableOpacity, Button } from 'react-native';
 
 import Comment from '../components/comment';
+import Footer from '../components/footer';
+import Headerbar from '../components/headerbar';
 import HikeCard from '../components/hikeCard';
 
 export default function Hike({route}) {
@@ -21,13 +23,14 @@ export default function Hike({route}) {
 
   return (
     <View style={styles.container}>
+      <Headerbar />
           <ImageBackground 
             style={styles.image}
-            source={image}
+            source={{uri: hike.image}}
             blurRadius={1}
             resizeMode="cover"
           >
-              <View style={{backgroundColor: 'rgba(0,0,0,0.4)', height: 300, justifyContent: 'center'}}>
+              <View style={{backgroundColor: 'rgba(0,0,0,0.4)', height: 200, justifyContent: 'center'}}>
                 <Text style={styles.hikeNameTitle}>{hike.route}</Text>   
               </View>
           </ImageBackground>
@@ -57,7 +60,9 @@ export default function Hike({route}) {
               <Text style={styles.sectionTitle}> Map </Text>
               <Image 
                 style={styles.mapImage}
-                source={image} 
+                source={{
+                  uri: 'https://www.lcsd.gov.hk/en/healthy/hiking/common/hiking/graphics/map_large/A10_map.jpg'
+                }} 
               />
             </View>
             <View>
@@ -66,48 +71,50 @@ export default function Hike({route}) {
                 { hike.brief }
               </Text>
             </View>
-            <View>
-              <Text style={styles.sectionTitle}> Details </Text>
-              <View style={styles.detailsSection}>
-                <Text style={styles.labelDetail}>Length: </Text>
-                <Text style={styles.labelData}>{hike.length}</Text>
-              </View>
-              <View style={styles.detailsSection}>
-                <Text style={styles.labelDetail}>Duration: </Text>
-                <Text style={styles.labelData}>{hike.duration}</Text>
-              </View>
-              <View style={styles.detailsSection}>
-                <Text style={styles.labelDetail}>Difficulty: </Text>
-                <Text style={styles.labelData}>{hike.difficulty}</Text>
-              </View>
-              <View style={styles.detailsSection}>
-                <Text style={styles.labelDetail}> Experience Required: </Text>
-                <Text style={styles.labelData}> No</Text>
-              </View>
-              <View style={styles.detailsSection}>
-                <Text style={styles.labelDetail}> Yada-Yada: </Text>
-                <Text style={styles.labelData}> Yada-Yada</Text>
-              </View>
-            </View>
+
             <View>
               <Text style={styles.sectionTitle}> Pictures </Text>
               <ScrollView
                 horizontal={true}
               >
-                {/* <HikeCard />
-                <HikeCard />
-                <HikeCard /> */}
+                {
+                  images.map((image) => <Image style={{
+                    height: 200,
+                    width: 380,
+                    marginRight: 10
+                  }} source={{
+                    uri: 'https://media.istockphoto.com/photos/group-of-hikers-walks-in-mountains-at-sunset-picture-id1189969126?k=20&m=1189969126&s=612x612&w=0&h=6JPjSS9UORT-DAnIoa0mopA9lwFxX8tX8HQrJdb_i70='
+                  }} /> )
+                }
               </ScrollView>
+            </View>
+            <View>
+              <Text style={styles.sectionTitle}> Details </Text>
+              <View style={{display: 'flex', flexDirection: 'row', marginLeft: 20}}>
+                <View style={styles.detailsSection}>
+                  <Text style={styles.labelDetail}>Length: </Text>
+                  <Text style={styles.labelDetail}>Duration: </Text>
+                  <Text style={styles.labelDetail}>Difficulty: </Text>
+                  <Text style={styles.labelDetail}>Starting Point:  </Text>
+                  <Text style={styles.labelDetail}>Finishing Point: </Text>
+                </View>
+                <View style={styles.detailsSection}>
+                  <Text style={styles.labelData}>{hike.length}</Text>
+                  <Text style={styles.labelData}>{hike.duration}</Text>
+                  <Text style={styles.labelData}>{hike.difficulty}</Text>
+                  <Text style={styles.labelData}>{hike.startingPoint}</Text>
+                  <Text style={styles.labelData}>{hike.finishingPoint}</Text>
+                </View>
+              </View>
             </View>
             <View>
               <View style={styles.reviewsHeader}>
                 <Text style={styles.reviewsTitle}>Reviews:</Text>
-                <Text style={styles.reviewsTitle}>AV</Text>
               </View>
               <ScrollView>
                 <View style={{
                   paddingVertical: 5,
-                  paddingHorizontal: 20
+                  paddingHorizontal: 10
                 }}>
                   <View style={{flex: 1, flexDirection:'row'}}>
                     <Image 
@@ -121,7 +128,7 @@ export default function Hike({route}) {
                     />
                   </View>
                   <TouchableOpacity style={styles.submitComment} onPress={() => pushToCommentData()}>
-                    <Text style={styles.submitCommentText}>Ok</Text>
+                    <Text style={styles.submitCommentText}>Submit</Text>
                   </TouchableOpacity>
                 </View>
                 {
@@ -130,6 +137,7 @@ export default function Hike({route}) {
               </ScrollView>
             </View>
           </ScrollView>
+          <Footer />
     </View>
   );
 }
@@ -137,6 +145,13 @@ export default function Hike({route}) {
 const image = {
     uri: 'https://images.unsplash.com/photo-1551632811-561732d1e306?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGlraW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80'
 }
+
+const images = [
+  { uri: '../assets/180206103735-tai-mo-shan-full-169.jpg'},
+  { uri: '../assets/825200.jpg'},
+  { uri: '../assets/http---cdn.cnn.com-cnnnext-dam-assets-160707154131-hk-beauty-dragons-back-02.jpg'},
+  { uri: '../assets/image-6.jpg' }
+]
 
 const data = {
   route: "Jardines Lookout - Quarry Bay",
@@ -174,9 +189,10 @@ const styles = StyleSheet.create({
   },
   submitCommentText: {
     borderWidth: 1,
-    padding: 4,
-    backgroundColor: 'red',
-    borderRadius: 5
+    padding: 7,
+    backgroundColor: '#BA2487',
+    borderRadius: 5,
+    color: 'white'
   },
   container: {
     flex: 1,
@@ -185,19 +201,17 @@ const styles = StyleSheet.create({
     flex: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#D7D7D7',
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
     paddingVertical: 10
   },
   commentInput:{
-    height:55,
+    height: 55,
     width: 300,
     borderWidth: 1,
     paddingHorizontal: 5
   },  
   reviewsTitle: {
     fontSize: 25,
-    fontWeight: 'bold',
     fontFamily: 'sans-serif-medium',
   },
   userImage:{
@@ -207,21 +221,24 @@ const styles = StyleSheet.create({
     marginRight: 10
   }, 
   labelDetail: {
-    fontSize: 17,
+    fontSize: 15,
+    marginBottom: 5,
     fontFamily: 'sans-serif-medium',
   },
   labelData: {
-    fontSize: 17,
+    marginBottom: 5,
+    fontSize: 15,
     fontFamily: 'sans-serif-medium',
   },
   detailsSection: {
       flex: 0,
-      flexDirection: 'row'
+      flexDirection: 'column',
+      marginRight: 10
   },
   infoText: {
     fontFamily:'sans-serif-medium',
     fontSize: 13,
-    paddingHorizontal: 15,
+    paddingHorizontal: 25,
     color: 'black',
   },  
   contentSection: {
@@ -234,6 +251,7 @@ const styles = StyleSheet.create({
     color: 'black',
     marginBottom: 8,
     marginTop: 10,
+    marginLeft: 15
   },
   buttonContainer: {
     marginTop: 2,
@@ -251,19 +269,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   image: {
-      height: 300,
+      height: 200,
   },
-
   mapImage: {
     height: 200,
-    width: 300,
+    width: 370,
     flex: 0,
-    marginLeft: 55
+    marginLeft: 15
   },
   hikeNameTitle: {
       fontFamily:'sans-serif-medium',
       fontSize: 30,
-      color:'white',
+      color: 'white',
       textAlign: 'center'
   }
 });

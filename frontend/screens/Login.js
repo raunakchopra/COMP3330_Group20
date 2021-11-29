@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   enterButton: {
     marginTop: 20,
-    backgroundColor: '#35BDD0',
+    backgroundColor: '#BA2487',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   enterText: {
     fontSize: 15,
     fontWeight: 'bold',
-    color: '#CAD5E2'
+    color: 'white'
   },  
   input: {
     height: 40,
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    marginBottom: -3,
+    marginBottom: 1,
   },
   logo: {
       height: 150,

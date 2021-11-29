@@ -12,18 +12,24 @@ export default function hikeCard(props) {
           }}
         >
             <ImageBackground 
-                source={image} 
+                source={{uri: props.data.image}} 
                 resizeMode="cover"
+                imageStyle={{borderRadius: 12}}
                 style={styles.image}
             >
                 <View style={styles.textContainer}>
                     <Text style={styles.hikeName}>{props.data.route}</Text>
-                    {/* <Text style={styles.hikeLocation}>Hong Kong Island</Text> */}
                 </View>
             </ImageBackground>
-            <View>
-                <Text style={styles.hikeInfo}><Text style={styles.hikeInfoLabel}>Duration: </Text>{props.data.duration} </Text>
-                <Text style={styles.hikeInfo}><Text style={styles.hikeInfoLabel}>Length:</Text> {props.data.length}</Text>
+            <View style={{marginLeft: 10}}>
+                <Text style={styles.hikeInfo}>
+                  <Text style={styles.hikeInfoLabel}>Duration:</Text>
+                  <Text style={{fontStyle: 'italic'}}>{props.data.duration}</Text>
+                </Text>
+                <Text style={styles.hikeInfo}>
+                  <Text style={styles.hikeInfoLabel}>Length:</Text>
+                  <Text style={{fontStyle: 'italic'}}>{props.data.length}</Text>
+                </Text>
             </View>
         </TouchableOpacity>
   );
@@ -38,16 +44,15 @@ const styles = StyleSheet.create({
     width:353,
     marginRight: 10,
     height:250,
+    marginBottom: -15,
   },
   image: {
     flex: 1,
     justifyContent: "center",
-    marginBottom: 10
+    marginBottom: 10,
   },
   textContainer: {
       backgroundColor: '#BA2487',
-      width: 150,
-      marginTop: 133,
   },
   hikeName: {
     color: 'white',
@@ -64,7 +69,8 @@ const styles = StyleSheet.create({
   hikeInfoLabel:{
       fontSize:16,
       fontFamily:'sans-serif-medium',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      marginRight: 12,
   },
   hikeInfo:{
       fontSize: 15
