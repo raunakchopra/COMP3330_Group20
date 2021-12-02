@@ -12,7 +12,11 @@ class Hike {
             map: String,
             instructions: String,
             heightMap: String,
-            difficulty: String
+            difficulty: String,
+            comments: [{
+                user: String,
+                text: String
+            }]
         }, { timestamps: true });
 
         this.model = mongoose.model('Hike', HikeSchema);

@@ -42,6 +42,32 @@ class HikeController {
         })
     }
 
+    async addComment(req, res, next){
+        const { id } = req.params
+
+        const { comment } = req.body;
+
+        let hike;
+        try{
+            hike = await this.hikeService.addComment({
+                query: {
+                    _id: id
+                },
+                body: {
+                    comment
+                }
+            })
+        }
+        catch(e){
+            return next(e)
+        }
+
+        return res.json({
+            hike
+        })
+        
+    }
+
     async createOne(req, res, next){
         
         let hike
