@@ -62,6 +62,23 @@ class HikeController {
         })
     }
 
+    async createMany(req, res,next){
+        const { list } = req.body
+
+        let hikes
+        try{
+            hikes = await this.hikeService.createMany({
+                list
+            })
+        }
+        catch(e){
+            return next(e)
+        }
+        return res.json({
+            hikes
+        })
+    }
+
     async deleteOne(req, res, next){
         
     }

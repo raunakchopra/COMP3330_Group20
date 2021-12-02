@@ -64,6 +64,24 @@ class EventController {
         
     }
 
+    async createMany(req, res, next){
+        const { list } = req.body;
+
+        let events;
+        try{
+            events = await this.eventService.createMany({
+                list
+            })
+        }
+        catch(e){
+            return next(e)
+        }
+
+        return res.json({
+            events
+        })
+    }
+
     async updateOne(req, res, next){
 
     }

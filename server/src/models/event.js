@@ -4,8 +4,8 @@ class Event {
     constructor() {
         const EventSchema = new mongoose.Schema({
             name: String,
-            hike: { type: mongoose.Schema.Types.ObjectId, ref: 'hike' },
-            organizer: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
+            hike: String,
+            organizer: String,
             date: String,
             information: String,
             attendees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }]

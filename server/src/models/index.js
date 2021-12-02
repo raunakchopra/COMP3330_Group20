@@ -8,7 +8,7 @@ class Models {
         this.userModel = new UserModel().getModel();
         this.accessModel = new AccessModel().getModel();
         this.hikeModel = new HikeModel().getModel();
-        this.EventModel = new EventModel().getModel();
+        this.eventModel = new EventModel().getModel();
     }
 
 }
