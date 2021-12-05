@@ -1,12 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
 
 
 export default function Login({ navigation  }) {
   const [username, setUserName] = useState("")
   const [password, setPassword] = useState("")
   const [user, setUser] = useState()
+
+  useEffect(() => {
+    Alert.alert(
+      "Hike Hong Kong",
+      `Welcome. For the Demo, please input username as 'user' and password as 'pwd'`,
+      [
+        {
+          text: "Proceed!",
+        }
+      ]
+    );
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -21,6 +33,7 @@ export default function Login({ navigation  }) {
       />
       <TextInput 
         style={styles.input}
+        secureTextEntry={true}
         onChangeText={(val) => setPassword(val)}
         placeholder = "Password"
       />
