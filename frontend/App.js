@@ -3,6 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet, Text, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { LogBox } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -44,3 +45,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreAllLogs();

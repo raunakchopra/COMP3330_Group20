@@ -1,23 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Image, ImageBackground, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import HikeCard from '../components/hikeCard';
-
+import axios from 'axios'
 export default function Event({route}) {
   const { event } = route.params
+  const [name, setName] = useState("")
+  const [hike, setHike] = useState("")
+  const [info, setInfo] = useState("")
+  const [org, setOrg] = useState("")
+  const [date, setDate] = useState("")
 
-  const createAlert = () =>
-    Alert.alert(
-      "Hike Hong Kong",
-      `Welcome to Add Event Page. `,
-      [
-        {
-          text: "Proceed!",
-        }
-      ]
-    );
-
-    const createSubmitAlert = () =>
+  const createSubmitAlert = () =>{
+    const res = axios.post('http://cd81-202-189-105-151.ngrok.io/v1/event', {
+      name,
+      hike,
+      organizer: org,
+      information: info,
+      date
+    }, {
+      headers: { 'Content-Type': 'application/json' }
+    })
+    
     Alert.alert(
       "Hike Hong Kong",
       `Thank You for Submitting the Event!.`,
@@ -27,7 +31,7 @@ export default function Event({route}) {
         }
       ]
     );
-    createAlert()
+  }
 
   return (
     <View style={styles.container}>
@@ -44,11 +48,21 @@ export default function Event({route}) {
           <Text style={styles.labelText}>Date: </Text>
         </View>
         <View style={styles.labelContainer}>
-          <TextInput style={styles.simpleInput}></TextInput>
-          <TextInput style={styles.simpleInput}></TextInput>
-          <TextInput style={styles.longInput}></TextInput>
-          <TextInput style={styles.simpleInput}></TextInput>
-          <TextInput style={styles.simpleInput}></TextInput>
+          <TextInput 
+            onChangeText={(text) => setName(text)} 
+            style={styles.simpleInput} />
+          <TextInput 
+            onChangeText={(text) => setHike(text)}
+            style={styles.simpleInput} />
+          <TextInput 
+            onChangeText={(text) => setInfo(text)}
+            style={styles.longInput} />
+          <TextInput 
+            onChangeText={(text) => setOrg(text)}
+            style={styles.simpleInput} />
+          <TextInput 
+            onChangeText={(text) => setDate(text)}
+            style={styles.simpleInput} />
         </View>
       </View>    
       <View style={styles.attendButtonContainer}>
@@ -78,6 +92,7 @@ const styles = StyleSheet.create({
     height: 30,
     width: 200,
     borderWidth: 1,
+    paddingLeft: 10,
     marginBottom: 20
   },  
   labelText: {

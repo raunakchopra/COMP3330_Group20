@@ -12,7 +12,7 @@ class HikeService extends Base {
         return this.model.findOneAndUpdate(
             query,
             { $push: {
-                comments: body.comment
+                comments: body
             } },
             { new: true, runValidators: true }
         );

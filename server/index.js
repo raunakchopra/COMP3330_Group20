@@ -9,5 +9,5 @@ const {
 const application = app();
 
 application.app.listen(PUBLIC_PORT, () => {
-    logger.info(`Server is up on port ${PUBLIC_PORT}`);
+    logger.info(`Server is up on port ${process.env.PORT}`);
 });

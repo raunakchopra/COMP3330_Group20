@@ -16,7 +16,7 @@ export default function Comment(props) {
                     style={styles.userImage}
                 />
                 <View style={{width:300}}>
-                    <Text style={styles.username}>{props.details.username}</Text>
+                    <Text style={styles.username}>{props.details.user}</Text>
                     <Text>{props.details.text} </Text>
                 </View>
             </View>

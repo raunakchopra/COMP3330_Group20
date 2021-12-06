@@ -45,7 +45,7 @@ class HikeController {
     async addComment(req, res, next){
         const { id } = req.params
 
-        const { comment } = req.body;
+        const { user, text } = req.body;
 
         let hike;
         try{
@@ -54,7 +54,7 @@ class HikeController {
                     _id: id
                 },
                 body: {
-                    comment
+                    user, text
                 }
             })
         }

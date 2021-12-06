@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Image, ImageBackground, ScrollView, TouchableOpacity, Button } from 'react-native';
@@ -9,16 +10,26 @@ import HikeCard from '../components/hikeCard';
 
 export default function Hike({route}) {
   const { hike } = route.params
-  const [commentText, setCommentText] = useState("")
-  const [commentData, setCommentData] = useState([...commentTempData])
 
-  const pushToCommentData = () => {
+  const [commentText, setCommentText] = useState("")
+  const [commentData, setCommentData] = useState([...hike.comments])
+
+  const pushToCommentData =  async () => {
     let temp = [...commentData]
     temp.unshift({
       username: "Soumil",
       text: commentText
     })
+
     setCommentData(temp)
+
+    const res = await axios.post(`http://cd81-202-189-105-151.ngrok.io/v1/hike/${hike._id}/comment`, {
+      user: "Soumil",
+      text: commentText
+    }, {
+      headers: { 'Content-Type': 'application/json' }
+    })
+
   }
 
   return (

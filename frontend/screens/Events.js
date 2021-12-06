@@ -1,13 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, Image, ScrollView, Keyboard, Button } from 'react-native';
-
+import axios from 'axios'
 import HikeCard from '../components/hikeCard';
 import Headerbar from '../components/headerbar';
 import EventCard from '../components/eventCard';
 import Footer from '../components/footer';
 
 export default function Events() {
+    const [eventData, setEventData] = useState([])
+    useEffect(async () => {
+        const res = await axios.get('http://cd81-202-189-105-151.ngrok.io/v1/event/')
+        setEventData(res.data.events)
+      }, [])
+
     return (
         <>
             <Headerbar />
@@ -20,7 +26,7 @@ export default function Events() {
 
                     <Text style={styles.hikeHeading}> EVENTS </Text>
                     {
-                        EventsData.map((event) => <View style={{marginBottom: 40}}><EventCard data={event} /></View>)
+                        eventData.map((event) => <View style={{marginBottom: 40}}><EventCard data={event} /></View>)
                     }
                 </ScrollView>
             </View>
@@ -63,34 +69,3 @@ const styles = StyleSheet.create({
         backgroundColor: 'red'
     },
 });
-
-const EventsData = [
-    {
-    "name": "Hike to Peak",
-    "hike": "Victoria Peak",
-    "information": "Start at Mount Butler Road, walk along Sir Cecils Ride and proceed to Tai Tam Reservoir Road, Jardines Lookout and Siu Ma Shan. Continue along Quarry Bay Tree Walk to Greig Road, Quarry Bay. This route largely follows Section 2 of the Wilson Trail. The middle part is rather rugged with uphill and downhill sections.",
-    "organizer": "Victoria Peak Hiking Group",
-    "date": "Thursday, December 1st"
-},
-{
-    "name": "Hike to Peak",
-    "hike": "Victoria Peak",
-    "information": "Start at Mount Butler Road, walk along Sir Cecils Ride and proceed to Tai Tam Reservoir Road, Jardines Lookout and Siu Ma Shan. Continue along Quarry Bay Tree Walk to Greig Road, Quarry Bay. This route largely follows Section 2 of the Wilson Trail. The middle part is rather rugged with uphill and downhill sections.",
-    "organizer": "Victoria Peak Hiking Group",
-    "date": "Thursday, December 1st"
-},
-{
-    "name": "Hike to Peak",
-    "hike": "Victoria Peak",
-    "information": "Start at Mount Butler Road, walk along Sir Cecils Ride and proceed to Tai Tam Reservoir Road, Jardines Lookout and Siu Ma Shan. Continue along Quarry Bay Tree Walk to Greig Road, Quarry Bay. This route largely follows Section 2 of the Wilson Trail. The middle part is rather rugged with uphill and downhill sections.",
-    "organizer": "Victoria Peak Hiking Group",
-    "date": "Thursday, December 1st"
-},
-{
-    "name": "Hike to Peak",
-    "hike": "Victoria Peak",
-    "information": "Start at Mount Butler Road, walk along Sir Cecils Ride and proceed to Tai Tam Reservoir Road, Jardines Lookout and Siu Ma Shan. Continue along Quarry Bay Tree Walk to Greig Road, Quarry Bay. This route largely follows Section 2 of the Wilson Trail. The middle part is rather rugged with uphill and downhill sections.",
-    "organizer": "Victoria Peak Hiking Group",
-    "date": "Thursday, December 1st"
-}
-]
