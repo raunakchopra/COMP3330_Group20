@@ -12,7 +12,7 @@ export default function Event({route}) {
   const [date, setDate] = useState("")
 
   const createSubmitAlert = () =>{
-    const res = axios.post('http://cd81-202-189-105-151.ngrok.io/v1/event', {
+    const res = axios.post('https://hiking-app-server.herokuapp.com/v1/event', {
       name,
       hike,
       organizer: org,

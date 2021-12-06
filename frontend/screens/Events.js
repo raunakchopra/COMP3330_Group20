@@ -10,7 +10,7 @@ import Footer from '../components/footer';
 export default function Events() {
     const [eventData, setEventData] = useState([])
     useEffect(async () => {
-        const res = await axios.get('http://cd81-202-189-105-151.ngrok.io/v1/event/')
+        const res = await axios.get('https://hiking-app-server.herokuapp.com/v1/event/')
         setEventData(res.data.events)
       }, [])
 

@@ -10,7 +10,7 @@ export default function Hikes() {
     const [hikeData, setHikeData] = useState([])
 
     useEffect(async () => {
-        const resHikes = await axios.get('http://cd81-202-189-105-151.ngrok.io/v1/hike/')
+        const resHikes = await axios.get('https://hiking-app-server.herokuapp.com/v1/hike/')
         setHikeData(resHikes.data.hikes)
       }, [])
 

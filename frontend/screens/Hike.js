@@ -23,7 +23,7 @@ export default function Hike({route}) {
 
     setCommentData(temp)
 
-    const res = await axios.post(`http://cd81-202-189-105-151.ngrok.io/v1/hike/${hike._id}/comment`, {
+    const res = await axios.post(`https://hiking-app-server.herokuapp.com/v1/hike/${hike._id}/comment`, {
       user: "Soumil",
       text: commentText
     }, {

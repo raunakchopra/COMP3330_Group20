@@ -13,8 +13,8 @@ export default function Newsfeed({navigation, route}) {
   const [eventData, setEventData] = useState([])
   
   useEffect(async () => {
-    const resHikes = await axios.get('http://cd81-202-189-105-151.ngrok.io/v1/hike/')
-    const resEvents = await axios.get('http://cd81-202-189-105-151.ngrok.io/v1/event/')
+    const resHikes = await axios.get('https://hiking-app-server.herokuapp.com/v1/hike/')
+    const resEvents = await axios.get('https://hiking-app-server.herokuapp.com/v1/event/')
     
     let tempHikes = []
     for(let i=0; i<4; i++){
