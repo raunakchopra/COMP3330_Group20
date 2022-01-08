@@ -19,3 +19,8 @@ The application can be easily run using `React Native Expo`. Please make sure th
 3. After the previous command has executed, please run the command `expo start`. This will create a new local server to access the mobile application in your web browser.
 4. To access this application on your mobile phone device, please make sure that the `Expo Go Mobile Application is installed`. In case you wish to open the application from an emulator, make sure that you have Android Studio installed and run an emulator device.
 5. Follow the commands he expo screen asks you to perform.
+
+### Additional
+
+1. [Powerpoint Presentation](https://github.com/raunakchopra/HikingApp/blob/master/Presentation.pdf)
+2. [Figma UI](https://www.figma.com/file/1rgFQKqgyp035qyXLpTbQ3/COMP3330---Hiking-App?node-id=0%3A1)
