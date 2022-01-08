@@ -12,10 +12,10 @@ https://user-images.githubusercontent.com/50191515/148639027-89c33f34-da85-41a7-
 
 ### Instructions to run locally
 
-The application can be easily run using _React Native Expo_. Please make sure that you have the stable release version of _NodeJS_ installed.
+The application can be easily run using `React Native Expo`. Please make sure that you have the stable release version of `NodeJS` installed.
 
 1. Clone the repository using the Github link.
-2. After cloning, open terminal and navigate to the frontend folder and run the command _npm i_. This command will ensure all the necessary node modules and packages are installed.
-3. After the previous command has executed, please run the command _expo start_. This will create a new local server to access the mobile application in your web browser.
-4. To access this application on your mobile phone device, please make sure that the _Expo Go Mobile Application is installed_. In case you wish to open the application from an emulator, make sure that you have Android Studio installed and run an emulator device.
+2. After cloning, open terminal and navigate to the frontend folder and run the command `npm i`. This command will ensure all the necessary node modules and packages are installed.
+3. After the previous command has executed, please run the command `expo start`. This will create a new local server to access the mobile application in your web browser.
+4. To access this application on your mobile phone device, please make sure that the `Expo Go Mobile Application is installed`. In case you wish to open the application from an emulator, make sure that you have Android Studio installed and run an emulator device.
 5. Follow the commands he expo screen asks you to perform.
